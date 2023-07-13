@@ -3,12 +3,34 @@
  */
 package bitmap.transformer;
 
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+
+
+    public static void main(String[] args) throws IOException {
+        if (args.length < 3) {
+            System.out.println("Usage: ./gradlew run --args InputPath OutputPath TransformOperation");
+            System.exit(1);
+        }
+
+        File inputFile = new File(args[0]);
+        File outputFile = new File(args[1]);
+        String transformName = args[2];
+
+        BufferedImage inputImage = ImageIO.read(inputFile);
+        Bitmap bitmap = new Bitmap(inputImage);
+
+        if (transformName.equals("grayscale")) {
+            bitmap.grayscale();
+        }
+
+        ImageIO.write(bitmap.toBufferedImage(), "bmp", outputFile);
     }
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-    }
 }
