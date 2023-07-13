@@ -14,7 +14,7 @@ public class Bitmap {
     public void grayscale() {
         int width = image.getWidth();
         int height = image.getHeight();
-
+        // chatGPT assisted with the method for making rgb values gray
         for (int i=0; i < width; i++){
             for (int j = 0; j < height; j++) {
                 Color pixel = new Color(this.image.getRGB(i,j));
@@ -38,7 +38,7 @@ public class Bitmap {
         int height = image.getHeight();
 
         int[] temp = new int[width];
-
+        // chatgpt assisted with the formula for flipping an image
         for (int i=0; i < width;i++){
             for (int j=0; j < height/2; j++){
                 int rgb = image.getRGB(i,j);
@@ -54,7 +54,7 @@ public class Bitmap {
     public void negative() {
         int width = image.getWidth();
         int height = image.getHeight();
-
+        // chatgpt assisted with the formula for making colors their negative
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 Color pixel = new Color(this.image.getRGB(i, j));
