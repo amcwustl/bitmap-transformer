@@ -33,6 +33,44 @@ public class Bitmap {
         }
     }
 
+    public void flip() {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        int[] temp = new int[width];
+
+        for (int i=0; i < width;i++){
+            for (int j=0; j < height/2; j++){
+                int rgb = image.getRGB(i,j);
+
+                temp[j] = rgb;
+
+                image.setRGB(i, j, image.getRGB(i, height - j - 1));
+                image.setRGB(i, height - j - 1, temp[j]);
+            }
+        }
+    }
+
+    public void negative() {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                Color pixel = new Color(this.image.getRGB(i, j));
+
+                int red = 255 - pixel.getRed();
+                int green = 255 - pixel.getGreen();
+                int blue = 255 - pixel.getBlue();
+                int alpha = pixel.getAlpha();
+
+                Color newColor = new Color (red, green, blue, alpha);
+                image.setRGB(i,j, newColor.getRGB());
+
+            }
+        }
+    }
+
     public BufferedImage toBufferedImage() {
         return this.image;
     }

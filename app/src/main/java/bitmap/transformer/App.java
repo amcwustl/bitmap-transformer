@@ -28,8 +28,13 @@ public class App {
 
         if (transformName.equals("grayscale")) {
             bitmap.grayscale();
-        } else if (transformName.equals("invert")) {
-            bitmap.invert();
+        } else if (transformName.equals("flip")) {
+            bitmap.flip();
+        } else if (transformName.equals("negative")){
+            bitmap.negative();
+        } else {
+            System.out.println("Transform operation is not a method");
+            System.exit(1);
         }
 
         ImageIO.write(bitmap.toBufferedImage(), "bmp", outputFile);
