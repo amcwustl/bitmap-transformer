@@ -28,6 +28,8 @@ public class App {
 
         if (transformName.equals("grayscale")) {
             bitmap.grayscale();
+        } else if (transformName.equals("invert")) {
+            bitmap.invert();
         }
 
         ImageIO.write(bitmap.toBufferedImage(), "bmp", outputFile);
